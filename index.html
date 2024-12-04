@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Personal e Aluno</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela Inicial -->
+        <div id="inicio">
+            <h1>Bem-vindo!</h1>
+            <p>Escolha a sua área:</p>
+            <div class="opcoes">
+                <div class="opcao aluno" onclick="escolherArea('aluno')">
+                    <h2>Área do Aluno</h2>
+                </div>
+                <div class="opcao personal" onclick="escolherArea('personal')">
+                    <h2>Área do Personal</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Login -->
+        <div id="login" class="hidden">
+            <h1 id="login-titulo">Login</h1>
+            <input type="text" id="username" placeholder="Nome">
+            <input type="password" id="password" placeholder="Senha">
+            <button onclick="login()">Entrar</button>
+            <button onclick="voltarAoInicio()">Voltar</button>
+        </div>
+
+        <!-- Área do Paciente -->
+        <div id="paciente-area" class="hidden">
+            <h1>Área do Paciente</h1>
+            <form id="paciente-form">
+                <!-- Perguntas -->
+                <h3>Qual é o seu objetivo principal em relação ao seu físico?</h3>
+                <label><input type="radio" name="objetivo" value="Perder gordura corporal"> Perder gordura corporal</label><br>
+                <label><input type="radio" name="objetivo" value="Ganhar massa muscular"> Ganhar massa muscular</label><br>
+                <label><input type="radio" name="objetivo" value="Manter o físico atual"> Manter o físico atual</label><br>
+
+                <h3>Qual é o seu nível atual de atividade física?</h3>
+                <label><input type="radio" name="atividade" value="Sedentário ou iniciante"> Sedentário ou iniciante</label><br>
+                <label><input type="radio" name="atividade" value="Moderado"> Moderado</label><br>
+                <label><input type="radio" name="atividade" value="Avançado"> Avançado</label><br>
+
+                <h3>Como você descreveria sua alimentação atual?</h3>
+                <label><input type="radio" name="alimentacao" value="Desorganizada e pouco saudável"> Desorganizada e pouco saudável</label><br>
+                <label><input type="radio" name="alimentacao" value="Moderadamente equilibrada"> Moderadamente equilibrada</label><br>
+                <label><input type="radio" name="alimentacao" value="Planejada e focada nos objetivos"> Planejada e focada nos objetivos</label><br>
+
+                <h3>Qual é a sua prioridade ao treinar?</h3>
+                <label><input type="radio" name="prioridade" value="Queimar calorias e melhorar o condicionamento"> Queimar calorias e melhorar o condicionamento</label><br>
+                <label><input type="radio" name="prioridade" value="Aumentar força e volume muscular"> Aumentar força e volume muscular</label><br>
+                <label><input type="radio" name="prioridade" value="Manter desempenho e evitar lesões"> Manter desempenho e evitar lesões</label><br>
+
+                <h3>Como você avalia seu metabolismo?</h3>
+                <label><input type="radio" name="metabolismo" value="Lento"> Lento</label><br>
+                <label><input type="radio" name="metabolismo" value="Normal"> Normal</label><br>
+                <label><input type="radio" name="metabolismo" value="Rápido"> Rápido</label><br>
+
+                <button type="button" onclick="submitPaciente()">Enviar Respostas</button>
+            </form>
+            <div id="treino-recebido">
+                <h3>Seu Treino</h3>
+                <p id="treino-texto-paciente">Ainda não foi enviado um treino para você.</p>
+            </div>
+            <button onclick="voltarAoLogin()">Voltar ao Login</button>
+        </div>
+
+        <!-- Área do Personal -->
+        <div id="treinador-area" class="hidden">
+            <div id="respostas-paciente">
+                <p>Selecione um paciente para ver as respostas.</p>
+            </div>
+            
+            <h1>Área do Personal</h1>
+            <div id="pacientes-list">
+                <h3>Pacientes Registrados</h3>
+                <select id="paciente-selecao">
+                    <option value="">Selecione um paciente</option>
+                </select>
+            </div>
+            <div id="treino-form">
+                <h3>Enviar Treino</h3>
+                <textarea id="treino-texto" placeholder="Digite o treino aqui..."></textarea><br>
+                <button onclick="enviarTreino()">Enviar Treino</button>
+            </div>
+            <button onclick="voltarAoLogin()">Voltar ao Login</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</body>
+</html>
